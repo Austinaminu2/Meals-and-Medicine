@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: 'DM Sans', 'DM Sans Fallback';
+  --font-mono: 'DM Mono', 'DM Mono Fallback';
+  --radius-lg: 1.25rem;
+}
+
+:root {
+  --background: oklch(0.99 0.004 150);
+  --foreground: oklch(0.22 0.03 155);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 155);
+  --primary: oklch(0.55 0.15 148);
+  --primary-foreground: oklch(0.99 0.004 150);
+  --muted: oklch(0.95 0.015 150);
+  --muted-foreground: oklch(0.45 0.03 155);
+  --border: oklch(0.88 0.025 150);
+  --ring: oklch(0.55 0.15 148);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 155);
+  --foreground: oklch(0.95 0.01 150);
+  --card: oklch(0.2 0.02 155);
+  --card-foreground: oklch(0.95 0.01 150);
+  --primary: oklch(0.68 0.15 148);
+  --primary-foreground: oklch(0.15 0.02 155);
+  --muted: oklch(0.24 0.02 155);
+  --muted-foreground: oklch(0.68 0.02 150);
+  --border: oklch(0.3 0.02 155);
+  --ring: oklch(0.68 0.15 148);
+}
+
+* { @apply border-border; }
+html { scroll-behavior: smooth; background: var(--background); }
+body { @apply bg-background text-foreground font-sans; }
+
+.brand-mark { @apply flex items-center gap-1 text-xl font-black tracking-[-0.08em]; }
+.brand-mark i { @apply text-primary not-italic; }
+.nav-link { @apply transition-colors hover:text-primary; }
+.nav-order { @apply rounded-full border border-foreground px-4 py-2 text-sm font-semibold transition-colors hover:bg-foreground hover:text-primary-foreground; }
+.theme-toggle { @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-foreground; }
+.eyebrow { @apply font-mono text-xs font-medium uppercase tracking-[0.22em] text-primary; }
+.hero-grid { @apply grid gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:gap-16; }
+.hero-image-wrap { @apply relative min-h-[390px] overflow-hidden rounded-[1.5rem] bg-muted sm:min-h-[560px]; }
+.hero-image { @apply absolute inset-0 h-full w-full object-cover; }
+.hero-image-wrap::after { content: ''; @apply absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent; }
+.hero-stamp { @apply absolute bottom-5 left-5 z-10 flex h-24 w-24 rotate-[-10deg] flex-col items-center justify-center rounded-full bg-primary text-center text-primary-foreground; }
+.hero-stamp span { @apply font-mono text-[9px] uppercase tracking-widest; }
+.hero-stamp strong { @apply mt-1 text-xs tracking-tight; }
+.text-link { @apply border-b border-foreground pb-1 text-sm font-semibold transition-colors hover:border-primary hover:text-primary; }
+.whatsapp-button { @apply inline-flex items-center justify-center gap-3 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 hover:bg-primary/90; }
+.cart-add-button { @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-primary text-primary transition-colors hover:bg-primary hover:text-primary-foreground; }
+.marquee { @apply overflow-hidden border-y border-foreground bg-primary py-3 font-mono text-xs font-semibold tracking-[0.18em] text-primary-foreground; }
+.marquee span { @apply block whitespace-nowrap; animation: marquee 22s linear infinite; }
+.about-image-wrap { @apply relative aspect-[3/4] overflow-hidden rounded-[1.5rem] border border-border bg-muted; }
+.about-image { @apply absolute inset-0 h-full w-full object-cover; }
+.menu-category { @apply rounded-[1.25rem] border border-border bg-card p-6 sm:p-7; }
+.menu-category-title { @apply inline-flex w-fit items-center rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground; }
+.best-seller-image-wrap { @apply relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-border bg-muted; }
+.best-seller-image { @apply absolute inset-0 h-full w-full object-cover; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-25%); } }
